@@ -4,22 +4,22 @@ module.exports = {
   async init($, config) {
     for (let i = 1; i < 6; i++) {
       $(`h${i}.tabset`).each((idx, elm) => {
-        let content = `<tabset>`
+        let content = `<v-tabs>`
         let tabs = []
         let tabContents = []
         $(elm).nextUntil(_.times(i, t => `h${t + 1}`).join(', '), `h${i + 1}`).each((hidx, hd) => {
-          tabs.push(`<li>${$(hd).html()}</li>`)
+          tabs.push(`<v-tab>${$(hd).html()}</v-tab>`)
           let tabContent = ''
           $(hd).nextUntil(_.times(i + 1, t => `h${t + 1}`).join(', ')).each((cidx, celm) => {
             tabContent += $.html(celm)
             $(celm).remove()
           })
-          tabContents.push(`<div class="tabset-panel">${tabContent}</div>`)
+          tabContents.push(`<v-tab-item>${tabContent}</v-tab-item>`)
           $(hd).remove()
         })
         content += `<template v-slot:tabs>${tabs.join('')}</template>`
         content += `<template v-slot:content>${tabContents.join('')}</template>`
-        content += `</tabset>`
+        content += `</v-tabs>`
         $(elm).replaceWith($(content))
       })
     }
