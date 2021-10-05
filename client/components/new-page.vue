@@ -11,6 +11,9 @@
         v-btn.mt-5(color='purple lighten-3', href='javascript:window.history.go(-1);', outlined)
           v-icon(left) mdi-arrow-left
           span {{ $t('newpage.goback') }}
+        v-btn.mt-5(:href='`/login/`', x-large)
+          v-icon(left) mdi-login
+          span {{ $t('newpage.login') }}
 </template>
 
 <script>
