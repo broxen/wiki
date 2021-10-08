@@ -154,7 +154,7 @@ export default {
       tocPosition: [
         { text: 'Align Left', value: 'sidebar-left' },
         { text: 'Align Right', value: 'sidebar-right' },
-        { text: 'Hide', value: 'sidebar-none' }
+        { text: 'Hide', value: '' }
       ],
       config: {
         theme: 'default',
