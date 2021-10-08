@@ -59,13 +59,13 @@
                   v-chip(label, color='white', small).primary--text coming soon
                 v-card-text
                   v-select(
-                    :items='[]'
+                    :items='tocPosition'
                     outlined
                     prepend-icon='mdi-border-vertical'
-                    v-model='config.iconset'
-                    label='Table of Contents Position'
+                    v-model='config.tocPosition'
+                    label='$t(`admin:theme.tocPosition`)'
                     persistent-hint
-                    hint='Select whether the table of contents is shown on the left, right or not at all.'
+                    hint='$t(`admin:theme.tocPositionHint`)'
                     disabled
                     )
 
@@ -151,10 +151,16 @@ export default {
         { text: 'Font Awesome 5', value: 'fa' },
         { text: 'Font Awesome 4', value: 'fa4' }
       ],
+      tocPosition: [
+        { text: 'Align Left', value: 'sidebar-left' },
+        { text: 'Align Right', value: 'sidebar-right' },
+        { text: 'Hide', value: 'sidebar-none' }
+      ],
       config: {
         theme: 'default',
         darkMode: false,
         iconset: '',
+        tocPosition: 'sidebar-left',
         injectCSS: '',
         injectHead: '',
         injectBody: ''
@@ -208,6 +214,7 @@ export default {
           variables: {
             theme: this.config.theme,
             iconset: this.config.iconset,
+            tocPosition: this.config.tocPosition,
             darkMode: this.darkMode,
             injectCSS: this.config.injectCSS,
             injectHead: this.config.injectHead,
